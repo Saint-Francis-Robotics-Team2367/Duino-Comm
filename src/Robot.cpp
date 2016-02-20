@@ -53,7 +53,7 @@ private:
 		if(Timer::GetFPGATimestamp() - lastSendTime > 0.5)
 		{
 			lastSendTime = Timer::GetFPGATimestamp();
-			dc->read();
+			ds->ReportError(std::to_string(dc->getAutoMode()));
 		}
 
 	}

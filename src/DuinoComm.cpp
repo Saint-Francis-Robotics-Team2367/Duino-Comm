@@ -42,22 +42,10 @@ void DuinoComm::updateStatus() {
 		strcat(msg, "D/C");
 	this->write(msg);
 }
-DuinoComm::AutoMode DuinoComm::getAutoMode() {
+int DuinoComm::getAutoMode() {
 	std::string str = this->read();
-	switch (str[0]) {
-	case '1':
-		return DuinoComm::LowGoal;
-	case '2':
-		return DuinoComm::Moat;
-	case '3':
-		return DuinoComm::Ramparts;
-	case '4':
-		return DuinoComm::RockWall;
-	case '5':
-		return DuinoComm::RoughTerrain;
-	case '6':
-		return DuinoComm::Nothing;
-	default:
-		return DuinoComm::Error;
-	}
+	if((str[0] - '0')>=0 && (str[0] - '0')<=9)
+		return str[0] - '0';
+	else
+		return -1;
 }

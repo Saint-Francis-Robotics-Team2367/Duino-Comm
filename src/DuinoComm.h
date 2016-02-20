@@ -30,7 +30,7 @@ public:
 	void write(char* msg);
 	std::string read();
 	void updateStatus();
-	AutoMode getAutoMode();
+	int getAutoMode();
 private:
 	I2C *i2cComm;
 	uint8_t id;
